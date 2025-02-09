@@ -17,7 +17,14 @@ Pronoy
 
 
  ########################### 2 - Detailed note about the functionality of our programs ###########################
-Step 1 works by : Pronoy write here...
+Step 1 works by : 
+ Input: Each document is read from corpus.jsonl. Our documents contain the keys _id (document identifier) and text (the full content).
+  Processing:
+  -1 Tokenization: The word_tokenize function splits the text into individual tokens.
+  -2 Filtering: A regular expression is used to remove non-alphanumeric characters, and all tokens are converted to lowercase.
+  -3 Stopword Removal: Common English stopwords (e.g., "the", "and", etc.) are removed using NLTK’s stopword list.
+  -4 Stemming: The Porter Stemmer is applied to reduce words to their root forms (e.g., "running" becomes "run").
+ Output: The processed tokens for each document are stored in a Python dictionary (the corpus), and a sample of the output is exported to an Excel file (preprocessed_corpus.xlsx) for verification
 
 Step 2 works by :
  -1 Taking the preprocessed corpus developped in step 1. 
@@ -41,7 +48,13 @@ To run the program:
 
  ########################### 4 - explanation ###########################
 
-Step 1 : Pronoy write here...
+Step 1 : 
+I used Python and NLTK to tokenize the text, filter out unwanted characters and numbers, remove stopwords, and perform stemming. The function preprocess(text) encapsulates these steps.
+
+1- Tokenization is done via word_tokenize().
+2- Filtering and Lowercasing: Using regular expressions to remove punctuation and ensure consistency.
+3- Stopword Removal ensures that common words do not clutter the index.
+4- Stemming reduces the tokens to their base forms, improving matching across different forms of a word.
 
 Step 2 :
  -1 defaultdict from the collections package is used as a means to hold the reverse index, this is done as a defaultdict automatically handles missing keys. defaultdict generates a default value for a key that is trying to be accessed that is yet to exist.

@@ -2,7 +2,7 @@ Assignement 1 - CSI4107
 
 Students:
 Yassin, Chad : 300240007
-Khelifa, Anas : 
+Khelifa, Anas : 300257055
 Fuad, Pronoy : 300269503
 
  ########################### 1 - Division of Tasks:  ###########################
@@ -34,7 +34,18 @@ Step 2 works by :
  -5 Once this process is done the elements in the inverted index are iterated over: the item is printed to the console example: matter: ['11880289', '13322804', '13770184'... and in the same iteration, the word and it's IDs are being appended to a list that's elements are formatted like a json file.
  -6 Finnaly the json library is used to create inverted_index.json which contains the inverted index.
 
-Step 3 works by : Anas write here...
+Step 3 works by :
+
+-1 The program reads the inverted index (inverted_index.json), which maps words to document IDs. It loads the preprocessed corpus (preprocessed_corpus.xlsx), ensuring each document ID is mapped to its tokenized content. It retrieves test queries from queries.jsonl and test.tsv for evaluation.
+-2 Queries are lowercasd and tokenized to match the format of the preprocessed corpus. If necessary, stemming and stopword removal are applied to ensure consistency with the corpus.
+-3 For each query, the system extracts terms and searches for them in the inverted index. A set of document IDs is created containing at least one of the query words.
+-4 The system uses TF-IDF vectorization to represent queries and documents numerically. Cosine similarity is computed between the query and each relevant document. The documents are sorted in descending order based on their similarity scores.
+-5 The ranked list for each query is written to ranked_results.txt, formatted as: query_id Q0 doc_id rank score run_name. This file contains the top 100 most relevant documents per query.
+-6 The system uses the test queries (test.tsv) to evaluate retrieval performance. The top-ranked results are saved in Results, following the required format for submission.
+At the end of Step 3, two key output files are generated:
+ranked_results.txt → Retrieval results based on cosine similarity ranking.
+Results → Evaluation output formatted for submission.
+
 
  ########################### 3 - complete instructions on how to run ###########################
 
@@ -44,7 +55,7 @@ To run the program:
  -3 Ensure that you computer has python and the following libraries installed: (use pip to install missing dependencies)
  -4 Run block #1 Preprocessing : You will have the file preprocessed_corpus.xlsx saved to the scifact directory, containing the corpus.
  -5 Run block #2 Inverted indexing : You will have the file inverted_index.json saved to the scifact direcory, containing the revers index.
- -6 Run block #3 ...Anas write here...
+ -6 Run block #3 Retrieval and Ranking: You will have the files ranked_results.txt and Results saved to the scifact directory, containing the results based on cosine similarity ranking and the test results.
 
  ########################### 4 - explanation ###########################
 
@@ -60,7 +71,16 @@ Step 2 :
  -1 defaultdict from the collections package is used as a means to hold the reverse index, this is done as a defaultdict automatically handles missing keys. defaultdict generates a default value for a key that is trying to be accessed that is yet to exist.
  -2 the list json_data is a simpele python list that contains dictionaries which have 2 keys, "word" that contains the words and "ids" which is a string that contains all the ids associated to the word.
 
-Step 3  : Anas write here...
+Step 3  :
+I implemented retrieval and ranking using the Vector Space Model with cosine similarity to rank documents based on their relevance to queries.
+-1 Data loading: The inverted index (inverted_index.json), preprocessed corpus (preprocessed_corpus.xlsx), and queries (queries.jsonl, test.tsv) are loaded.
+-2 Query processing: Queries are lowercased and tokenized to match the format of the preprocessed corpus.
+-3 Document retrieval: The inverted index is used to find documents containing at least one query word, reducing the search space.
+-4 Cosine similarity Computation: Documents are converted to TF-IDF vectors, and cosine similarity is used to rank them based on query relevance.
+-5 Saving ranked Results: The top 100 documents for each query are written to ranked_results.txt.
+-6 Test query evaluation: The system runs on test queries from test.tsv, saving ranked results in Results for submission.
+
 
 ########################### 5 - Mean Average Precision (MAP) score ###########################
-Anas write here...
+Titles + full text Mean Average Precision (MAP): 0.3491 - Calculated using Results and qrels.txt file
+qrels.txt is test.tsv file converted in qrels format.

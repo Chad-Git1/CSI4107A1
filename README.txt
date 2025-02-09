@@ -35,8 +35,8 @@ To run the program:
  -1 clone this repositiory to your computer
  -2 You can chose to create your own corpus or use the current one, please use the same format as corpus.jsonl
  -3 Ensure that you computer has python and the following libraries installed: (use pip to install missing dependencies)
- -4 Run block #1 Preprocessing : You will have the file preprocessed_corpus.xlsx saved to the root directory, containing the corpus.
- -5 Run block #2 Inverted indexing : You will have the file inverted_index.json saved to the root direcory, containing the revers index.
+ -4 Run block #1 Preprocessing : You will have the file preprocessed_corpus.xlsx saved to the scifact directory, containing the corpus.
+ -5 Run block #2 Inverted indexing : You will have the file inverted_index.json saved to the scifact direcory, containing the revers index.
  -6 Run block #3 ...Anas write here...
 
  ########################### 4 - explanation ###########################
